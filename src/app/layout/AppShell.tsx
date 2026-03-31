@@ -38,9 +38,9 @@ export function AppShell({
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-start gap-2 md:max-w-[470px] md:justify-end">
+          <div className="flex flex-wrap items-center justify-start gap-2 md:max-w-[520px] md:justify-end">
             <span className="mr-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--color-text-muted)]">
-              Fluxos
+              Escolha o Fluxo:
             </span>
             {flowTabs.map((tab) => {
               const isActive = tab === activeFlow;
@@ -51,10 +51,10 @@ export function AppShell({
                   type="button"
                   aria-pressed={isActive}
                   className={[
-                    'rounded-full px-3 py-2 text-sm font-semibold transition',
+                    'rounded-full px-3 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/30',
                     isActive
-                      ? 'bg-[var(--color-success-soft)] text-[var(--color-success)] ring-1 ring-[#b9d9c9]'
-                      : 'border border-[#cfdae8] bg-white text-[var(--color-text-muted)] hover:border-[#adc0d6] hover:text-[var(--color-primary-strong)]',
+                      ? 'bg-[var(--color-success-soft)] text-[var(--color-success)] ring-1 ring-[#b9d9c9] shadow-[inset_0_0_0_1px_rgba(47,143,91,0.08)]'
+                      : 'border border-[#cfdae8] bg-white text-[var(--color-text-muted)] hover:border-[#adc0d6] hover:bg-[#f7fafc] hover:text-[var(--color-primary-strong)]',
                   ].join(' ')}
                 >
                   {tab}

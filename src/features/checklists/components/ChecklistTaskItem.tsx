@@ -13,7 +13,7 @@ export function ChecklistTaskItem({ task, checked, onToggle }: ChecklistTaskItem
   return (
     <label
       className={[
-        'mb-3 block cursor-pointer rounded-2xl border px-5 py-4 transition hover:border-slate-300 hover:shadow-[0_10px_20px_rgba(20,33,61,0.05)]',
+        'mb-3 block cursor-pointer rounded-2xl border px-5 py-4 transition hover:border-slate-300 hover:shadow-[0_10px_20px_rgba(20,33,61,0.05)] focus-within:ring-2 focus-within:ring-[var(--color-primary)]/20',
         checked
           ? 'border-[#b9d9c9] bg-[linear-gradient(180deg,#f5fbf7,#dcefe5)]'
           : isCritical
@@ -51,7 +51,7 @@ export function ChecklistTaskItem({ task, checked, onToggle }: ChecklistTaskItem
                 {`Passo ${task.order.toString().padStart(2, '0')}`}
               </div>
 
-              <div className="text-base font-bold leading-6 text-slate-900">
+              <div className="text-[1.02rem] font-bold leading-6 text-slate-900">
                 {task.title}
                 {isCritical ? (
                   <span className="ml-2 inline-block rounded-md bg-[var(--color-danger)] px-2 py-0.5 text-[10px] font-bold text-white align-middle">

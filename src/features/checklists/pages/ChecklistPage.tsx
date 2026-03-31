@@ -1,35 +1,25 @@
 import { AppShell } from '../../../app/layout/AppShell';
 import { AppFooter } from '../components/AppFooter';
 import { ChecklistActions } from '../components/ChecklistActions';
-import { ChecklistOverview } from '../components/ChecklistOverview';
 import { ChecklistPhaseCard } from '../components/ChecklistPhaseCard';
 import { HeroHeader } from '../components/HeroHeader';
-import { PhaseQuickNav } from '../components/PhaseQuickNav';
 import { ProgressBar } from '../components/ProgressBar';
 import { pregaoFlow } from '../data/pregaoFlow';
 import { useChecklistProgress } from '../hooks/useChecklistProgress';
-import { downloadChecklistCsv } from '../utils/exportChecklistCsv';
+import { downloadChecklistPdf } from '../utils/exportChecklistPdf';
 
 const logoSrc = '/policia-penal-rn.png';
+const activeFlow = 'Pregão';
 
 export function ChecklistPage() {
   const { progress, completedCount, percentage, lastUpdated, toggleTask, resetChecklist } =
     useChecklistProgress(pregaoFlow);
 
-  const pendingCriticalCount = pregaoFlow.phases
-    .flatMap((phase) => phase.tasks)
-    .filter((task) => task.critical && !progress[task.id]).length;
-
-  const phaseNavItems = pregaoFlow.phases.map((phase) => ({
-    id: phase.id,
-    title: phase.title,
-    completed: phase.tasks.filter((task) => progress[task.id]).length,
-    total: phase.tasks.length,
-  }));
-
   function handleReset() {
     if (
-      window.confirm('Tem certeza que deseja resetar todas as etapas? Esta ação não pode ser desfeita.')
+      window.confirm(
+        'Tem certeza de que deseja resetar todas as etapas? Esta ação não poderá ser desfeita.',
+      )
     ) {
       resetChecklist();
     }
@@ -45,14 +35,14 @@ export function ChecklistPage() {
         'Inexigibilidade de Licitação',
         'Dispensa Eletrônica',
       ]}
-      activeFlow="Pregão"
+      activeFlow={activeFlow}
       logoSrc={logoSrc}
       footer={<AppFooter lastUpdated={lastUpdated} />}
     >
       <HeroHeader
         title={pregaoFlow.heroTitle}
         highlight={pregaoFlow.heroHighlight}
-        description={pregaoFlow.heroDescription}
+        description={`Módulo para acompanhamento das etapas do processo de ${activeFlow.toLowerCase()}.`}
         highlights={pregaoFlow.highlights}
       />
 
@@ -64,17 +54,8 @@ export function ChecklistPage() {
         percentage={percentage}
       />
 
-      <ChecklistOverview
-        totalTasks={pregaoFlow.totalTasks}
-        completedCount={completedCount}
-        pendingCriticalCount={pendingCriticalCount}
-        lastUpdated={lastUpdated}
-      />
-
-      <PhaseQuickNav items={phaseNavItems} />
-
       <ChecklistActions
-        onExport={() => downloadChecklistCsv(pregaoFlow, progress)}
+        onExport={() => void downloadChecklistPdf(pregaoFlow, progress)}
         onReset={handleReset}
       />
 

@@ -31,7 +31,7 @@ export function ProgressBar({
         <span>{`${completedCount} de ${totalTasks} etapas concluídas`}</span>
       </div>
 
-      <div className="h-3 overflow-hidden rounded-full bg-[#d5dee9]">
+      <div className="h-3 overflow-hidden rounded-full bg-[#d5dee9] ring-1 ring-[#c9d5e2]">
         <div
           className="flex h-full items-center justify-end bg-[linear-gradient(90deg,#9b7430_0%,#e2b457_22%,#35557a_100%)] pr-2 text-[10px] font-bold tracking-[0.02em] text-white transition-[width]"
           style={{ width: `${percentage}%` }}
@@ -39,6 +39,9 @@ export function ProgressBar({
           {`${percentage}%`}
         </div>
       </div>
+      <p className="mt-2 text-xs text-[var(--color-text-muted)]">
+        O progresso é atualizado automaticamente conforme as etapas são marcadas.
+      </p>
     </section>
   );
 }

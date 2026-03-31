@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
+import { APP_LOCALE } from '../../../shared/constants/locale';
 import type { ChecklistFlow } from '../../../shared/types/checklist';
 import { clearChecklistProgress, loadChecklistProgress, saveChecklistProgress } from '../utils/checklistStorage';
 import { calculateCompletedCount, calculateCompletionPercentage, createInitialProgress } from '../utils/progress';
@@ -15,7 +16,7 @@ export function useChecklistProgress(flow: ChecklistFlow) {
   useEffect(() => {
     saveChecklistProgress(flow, progress);
     setLastUpdated(
-      new Date().toLocaleTimeString('pt-BR', {
+      new Date().toLocaleTimeString(APP_LOCALE, {
         hour: '2-digit',
         minute: '2-digit',
       }),
@@ -39,7 +40,7 @@ export function useChecklistProgress(flow: ChecklistFlow) {
     clearChecklistProgress(flow);
     setProgress(createInitialProgress(flow));
     setLastUpdated(
-      new Date().toLocaleTimeString('pt-BR', {
+      new Date().toLocaleTimeString(APP_LOCALE, {
         hour: '2-digit',
         minute: '2-digit',
       }),

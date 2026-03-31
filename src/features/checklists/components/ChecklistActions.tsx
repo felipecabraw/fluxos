@@ -11,7 +11,7 @@ export function ChecklistActions({ onExport, onReset }: ChecklistActionsProps) {
         onClick={onExport}
         className="min-w-[210px] rounded-xl border border-[#bccbdd] bg-[var(--color-surface-alt)] px-5 py-3 text-sm font-semibold text-[var(--color-primary)] transition hover:border-[#8aa3c0] hover:bg-[#e3ebf4]"
       >
-        Exportar dados do checklist
+        Exportar checklist em PDF
       </button>
       <button
         type="button"
