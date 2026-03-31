@@ -9,3 +9,5 @@ node_modules/
 dist/
 build/
 .cache/
+vite-dev.log
+vite-dev.err.log
