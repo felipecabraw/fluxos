@@ -14,19 +14,19 @@ export function ProgressBar({
   percentage,
 }: ProgressBarProps) {
   return (
-    <section className="border-b border-[#d3dde8] bg-[var(--color-surface-alt)] px-5 py-7 md:px-9">
+    <section className="border-b border-[#d3dde8] bg-[var(--color-surface-alt)] px-4 py-6 sm:px-5 sm:py-7 md:px-9">
       <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
         <div>
-          <h3 className="text-[1.15rem] font-bold text-[var(--color-primary-strong)]">{title}</h3>
-          <p className="mt-1 text-sm text-[var(--color-text-muted)]">{subtitle}</p>
+          <h3 className="text-[1rem] font-bold text-[var(--color-primary-strong)] sm:text-[1.08rem] md:text-[1.15rem]">{title}</h3>
+          <p className="mt-1 text-[0.84rem] text-[var(--color-text-muted)] sm:text-sm">{subtitle}</p>
         </div>
 
-        <div className="w-fit rounded-full border border-[#c7d4e1] bg-white px-3 py-1.5 text-xs font-semibold text-[var(--color-primary)]">
+        <div className="w-fit rounded-full border border-[#c7d4e1] bg-white px-3 py-1.5 text-[11px] font-semibold text-[var(--color-primary)] sm:text-xs">
           {`${completedCount.toString().padStart(2, '0')} / ${totalTasks.toString().padStart(2, '0')} etapas`}
         </div>
       </div>
 
-      <div className="mb-3 flex flex-col gap-2 text-sm font-semibold text-[var(--color-text-muted)] md:flex-row md:justify-between">
+      <div className="mb-3 flex flex-col gap-2 text-[0.84rem] font-semibold text-[var(--color-text-muted)] sm:text-sm md:flex-row md:justify-between">
         <span>Progresso geral do fluxo</span>
         <span>{`${completedCount} de ${totalTasks} etapas concluídas`}</span>
       </div>

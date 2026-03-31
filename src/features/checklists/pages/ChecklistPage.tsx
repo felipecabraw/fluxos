@@ -59,7 +59,7 @@ export function ChecklistPage() {
         onReset={handleReset}
       />
 
-      <div className="bg-[linear-gradient(180deg,#f8fbfe,#edf3f8)] px-5 py-8 md:px-9">
+      <div className="bg-[linear-gradient(180deg,#f8fbfe,#edf3f8)] px-4 py-6 sm:px-5 sm:py-7 md:px-9 md:py-8">
         {pregaoFlow.phases.map((phase) => (
           <ChecklistPhaseCard
             key={phase.id}
