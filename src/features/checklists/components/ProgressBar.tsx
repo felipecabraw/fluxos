@@ -36,7 +36,7 @@ export function ProgressBar({
           className="flex h-full items-center justify-end bg-[linear-gradient(90deg,#9b7430_0%,#e2b457_22%,#35557a_100%)] pr-2 text-[10px] font-bold tracking-[0.02em] text-white transition-[width]"
           style={{ width: `${percentage}%` }}
         >
-          {percentage > 12 ? `${percentage}%` : ''}
+          {`${percentage}%`}
         </div>
       </div>
     </section>

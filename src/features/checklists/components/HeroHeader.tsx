@@ -17,6 +17,9 @@ export function HeroHeader({ title, highlight, description, highlights }: HeroHe
             {title} <span className="text-[var(--color-accent)]">{highlight}</span>
           </h1>
           <p className="max-w-3xl text-[0.93rem] leading-6 text-white/82">{description}</p>
+          <span className="inline-flex w-fit rounded-full border border-[#d88c8c] bg-[#8f2f2f] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.08em] text-white">
+            Sistema em desenvolvimento
+          </span>
         </div>
 
         <div className="rounded-2xl border border-white/10 bg-white/7 px-4 py-3.5">
