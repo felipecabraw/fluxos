@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEAP FLUXOGRAMAS | Checklist Dinâmico - Pregão</title>
+    <meta name="description" content="SEAP FLUXOGRAMAS - checklist dinâmico para acompanhamento do processo de pregão.">
+    <link rel="icon" type="image/png" href="policia-penal-rn.png">
+    <style>
+        :root {
+            --bg: #eef3f9;
+            --surface: #ffffff;
+            --surface-muted: #f6f8fb;
+            --text: #14213d;
+            --text-soft: #4f5d75;
+            --border: #d5deea;
+            --primary: #173d7a;
+            --primary-strong: #0e2b59;
+            --primary-soft: #dce7f8;
+            --accent: #d4a017;
+            --success: #1f8f5f;
+            --success-soft: #ddf6ea;
+            --danger: #c23b22;
+            --danger-soft: #fff1eb;
+            --shadow: 0 20px 50px rgba(20, 33, 61, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(212, 160, 23, 0.16), transparent 28%),
+                linear-gradient(180deg, #f7f9fc 0%, var(--bg) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 28px 16px;
+        }
+
+        .page-shell {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .gov-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 20px;
+            margin-bottom: 18px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(213, 222, 234, 0.9);
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(20, 33, 61, 0.06);
+        }
+
+        .gov-banner-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .gov-banner-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            font-weight: 700;
+        }
+
+        .gov-banner-title {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .gov-banner-tag {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .container {
+            background: var(--surface);
+            border: 1px solid rgba(213, 222, 234, 0.95);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.95fr);
+            gap: 24px;
+            padding: 36px;
+            background:
+                linear-gradient(135deg, rgba(23, 61, 122, 0.98), rgba(14, 43, 89, 0.94)),
+                linear-gradient(135deg, #173d7a, #0e2b59);
+            color: #ffffff;
+        }
+
+        .hero-copy {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-self: flex-start;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 4vw, 3.3rem);
+            line-height: 1.04;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-title span {
+            display: block;
+            color: #f5c451;
+        }
+
+        .hero-text {
+            max-width: 62ch;
+            font-size: 1rem;
+            line-height: 1.75;
+            color: rgba(255, 255, 255, 0.84);
+        }
+
+        .hero-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hero-highlights span {
+            padding: 10px 14px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .hero-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-card {
+            width: min(100%, 360px);
+            padding: 24px;
+            border-radius: 24px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(242, 246, 251, 0.92));
+            color: var(--text);
+            box-shadow: 0 18px 42px rgba(7, 17, 39, 0.24);
+            text-align: center;
+        }
+
+        .brand-card img {
+            width: min(100%, 180px);
+            height: auto;
+            margin-bottom: 18px;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 24px rgba(20, 33, 61, 0.14));
+        }
+
+        .brand-card h2 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .brand-card p {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--text-soft);
+        }
+
+        .progress-section {
+            padding: 28px 36px;
+            background: var(--surface-muted);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: flex-end;
+            margin-bottom: 18px;
+        }
+
+        .section-heading h3 {
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        .section-heading p {
+            color: var(--text-soft);
+            font-size: 0.92rem;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 14px;
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 32px;
+            background: #dbe4f0;
+            border-radius: 999px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 5px rgba(20, 33, 61, 0.08);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #d4a017 0%, #f2c14f 16%, #204b93 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.82rem;
+            letter-spacing: 0.02em;
+        }
+
+        .controls {
+            padding: 22px 36px;
+            background: var(--surface);
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 20px;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            min-width: 210px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-reset {
+            background: linear-gradient(135deg, #d3563c, #ba2d14);
+            color: white;
+            box-shadow: 0 12px 20px rgba(194, 59, 34, 0.2);
+        }
+
+        .btn-export {
+            background: linear-gradient(135deg, #204b93, #173d7a);
+            color: white;
+            box-shadow: 0 12px 20px rgba(23, 61, 122, 0.22);
+        }
+
+        .content {
+            padding: 36px;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(246, 248, 251, 0.92)),
+                var(--surface);
+        }
+
+        .phase {
+            margin-bottom: 36px;
+        }
+
+        .phase:last-child {
+            margin-bottom: 0;
+        }
+
+        .phase-title {
+            background: linear-gradient(135deg, #173d7a, #2456aa);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 18px;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 12px 24px rgba(23, 61, 122, 0.16);
+        }
+
+        .phase-title::before {
+            content: "";
+            width: 5px;
+            height: 28px;
+            background: #f5c451;
+            border-radius: 999px;
+            flex-shrink: 0;
+        }
+
+        .task-item {
+            background: linear-gradient(180deg, #ffffff, #f9fbfd);
+            border: 1px solid var(--border);
+            border-left: 5px solid var(--primary);
+            padding: 20px;
+            margin-bottom: 14px;
+            border-radius: 18px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .task-item:hover {
+            box-shadow: 0 12px 28px rgba(20, 33, 61, 0.08);
+            transform: translateX(4px);
+        }
+
+        .task-item.completed {
+            background: linear-gradient(180deg, #f5fdf9, var(--success-soft));
+            border-color: #bfead3;
+            border-left-color: var(--success);
+        }
+
+        .task-item.critical {
+            border-left-color: var(--danger);
+            background: linear-gradient(180deg, #fffaf7, var(--danger-soft));
+        }
+
+        .task-item.critical.completed {
+            background: linear-gradient(180deg, #f5fdf9, var(--success-soft));
+            border-left-color: var(--success);
+        }
+
+        .task-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            margin-top: 3px;
+            cursor: pointer;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .task-number {
+            background: var(--primary);
+            color: white;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.82rem;
+            flex-shrink: 0;
+            box-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.14);
+        }
+
+        .task-item.completed .task-number {
+            background: var(--success);
+        }
+
+        .task-item.critical .task-number {
+            background: var(--danger);
+        }
+
+        .task-title {
+            flex: 1;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.45;
+        }
+
+        .task-details {
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            margin-left: 60px;
+            line-height: 1.7;
+        }
+
+        .critical-badge {
+            display: inline-block;
+            background: var(--danger);
+            color: white;
+            padding: 5px 9px;
+            border-radius: 999px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .footer {
+            background: var(--surface-muted);
+            padding: 22px 36px 28px;
+            text-align: center;
+            color: var(--text-soft);
+            font-size: 0.88rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-brand {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 14px;
+            }
+
+            .gov-banner,
+            .progress-section,
+            .controls,
+            .content,
+            .footer,
+            .hero {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .gov-banner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .section-heading,
+            .progress-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btn {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .task-details {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .hero-title {
+                font-size: 1.85rem;
+            }
+
+            .brand-card {
+                width: 100%;
+            }
+
+            .phase-title {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-shell">
+        <div class="gov-banner">
+            <div class="gov-banner-copy">
+                <span class="gov-banner-label">Secretaria da Administração Penitenciária</span>
+                <p class="gov-banner-title">Ambiente institucional para acompanhamento de fluxos processuais</p>
+            </div>
+            <span class="gov-banner-tag">Fluxo ativo: Pregão</span>
+        </div>
+
+        <main class="container">
+            <section class="hero">
+                <div class="hero-copy">
+                    <span class="eyebrow">SEAP FLUXOGRAMAS</span>
+                    <h1 class="hero-title">Checklist dinâmico para tramitação de processos <span>do setor</span></h1>
+                    <p class="hero-text">Esta página concentra o fluxo do processo de pregão, com acompanhamento visual das etapas, avanço em tempo real e apoio à rotina de conferência documental do setor.</p>
+                    <div class="hero-highlights">
+                        <span>Fluxo institucional padronizado</span>
+                        <span>Progresso salvo automaticamente</span>
+                        <span>Exportação rápida do andamento</span>
+                    </div>
+                </div>
+
+                <div class="hero-brand">
+                    <div class="brand-card">
+                        <img src="policia-penal-rn.png" alt="Logo da Polícia Penal do Rio Grande do Norte">
+                        <h2>SEAP FLUXOGRAMAS</h2>
+                        <p>Ferramenta visual para organizar checklists por tipo de processo que tramita no setor, começando pelo fluxo de pregão.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="progress-section">
+                <div class="section-heading">
+                    <div>
+                        <h3>Checklist Dinâmico - Processo de Pregão</h3>
+                        <p>Marque cada etapa concluída para acompanhar a evolução do processo.</p>
+                    </div>
+                </div>
+
+                <div class="progress-info">
+                    <span>Progresso geral do fluxo</span>
+                    <span id="progress-text">0 de 21 etapas concluídas</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill">0%</div>
+                </div>
+            </section>
+
+            <div class="controls">
+                <button class="btn btn-export" onclick="exportarDados()">Exportar dados do checklist</button>
+                <button class="btn btn-reset" onclick="resetarChecklist()">Resetar etapas</button>
+            </div>
+
+            <div class="content">
+                <div class="phase">
+                    <div class="phase-title">Fase 1: Preparação e Aprovação (CPL, Jurídico, PGE)</div>
+
+                    <div class="task-item" data-task-id="1">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">1</div>
+                            <div class="task-title">CPL: Elaborar Minutas Iniciais</div>
+                        </div>
+                        <div class="task-details">Minuta do Edital, Contrato, Aditivo (se aplicável), Apostilamento (se aplicável). Documentos de Referência: ETP, TR, Pesquisa Mercadológica, Análise de Riscos.</div>
+                    </div>
+
+                    <div class="task-item" data-task-id="2">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">2</div>
+                            <div class="task-title">CPL: Anexos do TCE-RN (Anexo 38º)</div>
+                        </div>
+                        <div class="task-details">Preparar Anexo 38º (TCE) para juntada no processo SEI.</div>
+                    </div>
+
+                    <div class="task-item" data-task-id="3">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">3</div>
+                            <div class="task-title">CPL: Enviar para o Jurídico</div>
+                        </div>
+                        <div class="task-details">Para análise de conformidade.</div>
+                    </div>
+
+                    <div class="task-item" data-task-id="4">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">4</div>
+                            <div class="task-title">Jurídico: Análise e Envio à PGE</div>
+                        </div>
+                        <div class="task-details">Jurídico enviará para a PGE, que retornará com diligências ou aprovação.</div>
+                    </div>
+
+                    <div class="task-item critical" data-task-id="5">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">5</div>
+                            <div class="task-title">PGE: Análise e Retorno (Com Ressalvas) <span class="critical-badge">CRÍTICO</span></div>
+                        </div>
+                        <div class="task-details">Processo encaminhado aos setores para saneamento dos vícios. <strong>Atenção: diligências da PGE devem ser prontamente atendidas.</strong></div>
+                    </div>
+
+                    <div class="task-item" data-task-id="6">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">6</div>
+                            <div class="task-title">CPL: Saneamento de Vícios (se houver ressalvas)</div>
+                        </div>
+                        <div class="task-details">Recebe o processo, realiza atualização do Contrato e Edital com base nas mudanças apontadas pela PGE. Envia novamente para o Jurídico para análise de conformidade.</div>
+                    </div>
+
+                    <div class="task-item" data-task-id="7">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">7</div>
+                            <div class="task-title">Gabinete/SEPA: Autorização do Feito</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-title">Fase 2: Execução do Pregão e Seleção do Fornecedor (SEAD)</div>
+
+                    <div class="task-item" data-task-id="8">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">8</div>
+                            <div class="task-title">SEAD: Cadastro do Edital e Publicação</div>
+                        </div>
+                        <div class="task-details">Publicação em: DOE, Jornal de Grande Circulação e PNCP. Prazos: aquisição (10 dias úteis) e serviço (12 dias úteis).</div>
+                    </div>
+
+                    <div class="task-item" data-task-id="9">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">9</div>
+                            <div class="task-title">SEAD: Abertura da Sessão de Pregão</div>
+                        </div>
+                        <div class="task-details">Com erros: sessão pode ser suspensa. Sem erros: sessão aberta para lances.</div>
+                    </div>
+
+                    <div class="task-item" data-task-id="10">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">10</div>
+                            <div class="task-title">SEAD: Sessão de Continuidade</div>
+                        </div>
+                        <div class="task-details">1º análise das propostas. 2º análises de habilitação.</div>
+                    </div>
+
+                    <div class="task-item" data-task-id="11">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">11</div>
+                            <div class="task-title">SEAD: Análise de Documentação do Fornecedor</div>
+                        </div>
+                        <div class="task-details">Contrato Social. Certidões (SICAF): se vencida, diligência (CPL pode puxar certidão no SICAF). Atestado de capacidade técnica. Observar a legitimidade do demandante.</div>
+                    </div>
+
+                    <div class="task-item" data-task-id="12">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">12</div>
+                            <div class="task-title">SEAD: Após Análise dos Documentos</div>
+                        </div>
+                        <div class="task-details">Prazo para recurso: 3 dias úteis (empresa) e 3 dias úteis (contrarrazões).</div>
+                    </div>
+
+                    <div class="task-item" data-task-id="13">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">13</div>
+                            <div class="task-title">SEAD: Decisão (Razões e contrarrazões)</div>
+                        </div>
+                    </div>
+
+                    <div class="task-item" data-task-id="14">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">14</div>
+                            <div class="task-title">SEAD: Homologação e Publicação</div>
+                        </div>
+                        <div class="task-details">Homologação no portal COMPRAS pelo Secretário. Publicação da homologação no DOE.</div>
+                    </div>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-title">Fase 3: Formalização do Contrato (CPL, Gabinete, Jurídico, UIAG)</div>
+
+                    <div class="task-item" data-task-id="15">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">15</div>
+                            <div class="task-title">CPL: Juntar Anexos do TCE-RN (Anexo 13º)</div>
+                        </div>
+                        <div class="task-details">Anexo 13º (TCE) deve ser juntado pela UIAG no site do TCE.</div>
+                    </div>
+
+                    <div class="task-item" data-task-id="16">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">16</div>
+                            <div class="task-title">Gabinete: Despacho para o Financeiro (Juntada de Empenho)</div>
+                        </div>
+                    </div>
+
+                    <div class="task-item critical" data-task-id="17">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">17</div>
+                            <div class="task-title">CPL: Elaborar Minuta Final do Contrato <span class="critical-badge">CRÍTICO</span></div>
+                        </div>
+                        <div class="task-details"><strong>Se convênio: necessita de aceite da SENAPEN.</strong> Com fornecedor selecionado: minuta com dados completos do fornecedor (endereço, e-mail, telefone, etc.). Objeto do contrato com especificações (marca/modelo, valor unitário e total conforme ETP, TR, Edital). Juntar SICAF atualizado e Certidão Consolidada do TCU.</div>
+                    </div>
+
+                    <div class="task-item" data-task-id="18">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">18</div>
+                            <div class="task-title">CPL: Enviar ao Setor Jurídico (Verificação)</div>
+                        </div>
+                    </div>
+
+                    <div class="task-item critical" data-task-id="19">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">19</div>
+                            <div class="task-title">Gabinete: Recebe, Aprova e Autoriza Formalização <span class="critical-badge">CRÍTICO</span></div>
+                        </div>
+                        <div class="task-details"><strong>Atenção: autorização do Secretário para formalizar o contrato.</strong> Gabinete deve enviar para UCI para conformidade. <strong>Atenção: diligências da UCI devem ser prontamente atendidas.</strong></div>
+                    </div>
+
+                    <div class="task-item" data-task-id="20">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">20</div>
+                            <div class="task-title">CPL: Confecção e Assinatura do Contrato</div>
+                        </div>
+                        <div class="task-details">Alimenta planilha interna de controle. Manda e-mail para empresa (contrato no SEI). Empresa assina contrato no SEI (prazo de 5 dias úteis). Após assinatura da empresa, enviar para bloco de assinatura do Secretário. Depois, bloco de assinatura das testemunhas - UIAG.</div>
+                    </div>
+
+                    <div class="task-item" data-task-id="21">
+                        <div class="task-header">
+                            <input type="checkbox" class="checkbox" onchange="atualizarProgresso()">
+                            <div class="task-number">21</div>
+                            <div class="task-title">CPL: Despacho para UIAG/SEAP (Publicação no DOE e Anexo 13º TCE)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>Dados salvos automaticamente no navegador | Última atualização: <span id="last-update">--:--</span></p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'checklist_pregao_seap';
+        const TOTAL_TASKS = 21;
+
+        window.addEventListener('DOMContentLoaded', function() {
+            carregarDados();
+            atualizarProgresso();
+        });
+
+        function salvarDados() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const dados = {};
+            checkboxes.forEach((checkbox, index) => {
+                dados[index + 1] = checkbox.checked;
+            });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(dados));
+            atualizarTimestamp();
+        }
+
+        function carregarDados() {
+            const dados = localStorage.getItem(STORAGE_KEY);
+            if (dados) {
+                const parsed = JSON.parse(dados);
+                const checkboxes = document.querySelectorAll('.checkbox');
+                checkboxes.forEach((checkbox, index) => {
+                    checkbox.checked = parsed[index + 1] || false;
+                    if (checkbox.checked) {
+                        checkbox.closest('.task-item').classList.add('completed');
+                    }
+                });
+            }
+        }
+
+        function atualizarProgresso() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const percentage = Math.round((checked / TOTAL_TASKS) * 100);
+
+            document.getElementById('progress-fill').style.width = percentage + '%';
+            document.getElementById('progress-fill').textContent = percentage + '%';
+            document.getElementById('progress-text').textContent = `${checked} de ${TOTAL_TASKS} etapas concluídas`;
+
+            document.querySelectorAll('.task-item').forEach(item => {
+                const checkbox = item.querySelector('.checkbox');
+                if (checkbox.checked) {
+                    item.classList.add('completed');
+                } else {
+                    item.classList.remove('completed');
+                }
+            });
+
+            salvarDados();
+        }
+
+        function resetarChecklist() {
+            if (confirm('Tem certeza que deseja resetar todas as etapas? Esta ação não pode ser desfeita.')) {
+                document.querySelectorAll('.checkbox').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                localStorage.removeItem(STORAGE_KEY);
+                atualizarProgresso();
+            }
+        }
+
+        function exportarDados() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const tasks = document.querySelectorAll('.task-item');
+            let csv = 'Número,Etapa,Status,Data de Conclusão\n';
+
+            tasks.forEach((task, index) => {
+                const numero = index + 1;
+                const titulo = task.querySelector('.task-title').textContent.trim();
+                const status = checkboxes[index].checked ? 'Concluído' : 'Pendente';
+                const data = checkboxes[index].checked ? new Date().toLocaleDateString('pt-BR') : '';
+                csv += `${numero},"${titulo}","${status}","${data}"\n`;
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `checklist_pregao_seap_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function atualizarTimestamp() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('last-update').textContent = `${hours}:${minutes}`;
+        }
+    </script>
+</body>
+</html>
